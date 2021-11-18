@@ -1,4 +1,4 @@
-#include <stmpfs_error.h>
+#include <msgmap_error.h>
 #include <iostream>
 
 /** @file
@@ -10,7 +10,7 @@
 int main()
 {
     try {
-        throw stmpfs_error_t(STMPFS_EXT_LIB_ERR);
+        throw msgmap_error_t(MSGMAP_EXT_LIB_ERR);
     }
     catch (std::exception & err)
     {

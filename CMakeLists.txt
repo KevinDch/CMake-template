@@ -16,7 +16,7 @@ add_compile_definitions("PACKAGE_NAME=\"msgmap\"")
 add_compile_definitions("PACKAGE_VERSION=\"0.0.1\"")
 
 # default definitions
-default_definition(MSGMAP_PREFIX "\"(stmpfs) \"")
+default_definition(MSGMAP_PREFIX "\"(msgmap) \"")
 
 # add external library
 #set(SHA256SUM_SRC_FILES "")
@@ -29,6 +29,7 @@ default_definition(MSGMAP_PREFIX "\"(stmpfs) \"")
 add_library(msgmap
         src/msgmap_error.cpp    src/include/msgmap_error.h
         src/debug.cpp           src/include/debug.h
+        src/reactor.cpp         src/include/reactor.h
         )
 target_include_directories(msgmap PUBLIC src/include)
 target_link_libraries(msgmap PUBLIC ${EXTERNAL_LIBRARIES})

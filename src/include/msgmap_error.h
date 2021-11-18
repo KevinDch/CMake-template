@@ -10,7 +10,7 @@
 #include <utility>
 #include <cstring>
 
-#define STMPFS_EXT_LIB_ERR      0xA0000001      /* External library error */
+#define MSGMAP_EXT_LIB_ERR      0xA0000001      /* External library error */
 
 /// Filesystem Error Type
 class msgmap_error_t : public std::exception
