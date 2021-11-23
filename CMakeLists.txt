@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-set(PROJECT_NAME "msgmap")
+set(PROJECT_NAME "CMake_Template")
 set(PROJECT_VERSION "0.0.1")
 
 project(${PROJECT_NAME})
