@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
-project(stmpfs_rewrite)
+
+set(PROJECT_NAME "msgmap")
+set(PROJECT_VERSION "0.0.1")
+
+project(${PROJECT_NAME})
 
 set(EXTERNAL_LIBRARIES "")
 
@@ -12,11 +16,12 @@ if ("X${CMAKE_BUILD_TYPE}" STREQUAL "XDebug")
 endif()
 
 add_compile_definitions("_FILE_OFFSET_BITS=64")
-add_compile_definitions("PACKAGE_NAME=\"msgmap\"")
-add_compile_definitions("PACKAGE_VERSION=\"0.0.1\"")
+add_compile_definitions("PACKAGE_NAME=\"${PROJECT_NAME}\"")
+add_compile_definitions("PACKAGE_VERSION=\"${PROJECT_VERSION}\"")
 
 # default definitions
-default_definition(MSGMAP_PREFIX "\"(msgmap) \"")
+string(TOUPPER ${PROJECT_NAME} MARCO_PREFIX)
+default_definition(${MARCO_PREFIX}_PREFIX "\"(${PROJECT_NAME}) \"")
 
 # add external library
 #set(SHA256SUM_SRC_FILES "")
@@ -26,16 +31,15 @@ default_definition(MSGMAP_PREFIX "\"(msgmap) \"")
 #add_ext_lib(sha256sum ${SHA256SUM_SRC_FILES})
 
 # STEMPFS Static Library
-add_library(msgmap
+add_library(${PROJECT_NAME}
         src/msgmap_error.cpp    src/include/msgmap_error.h
         src/debug.cpp           src/include/debug.h
-        src/reactor.cpp         src/include/reactor.h
         )
-target_include_directories(msgmap PUBLIC src/include)
-target_link_libraries(msgmap PUBLIC ${EXTERNAL_LIBRARIES})
+target_include_directories(${PROJECT_NAME} PUBLIC src/include)
+target_link_libraries(${PROJECT_NAME} PUBLIC ${EXTERNAL_LIBRARIES})
 
 # Unit tests
 if ("X${CMAKE_BUILD_TYPE}" STREQUAL "XDebug")
-    stmpfs_add_test(error       "Error test")
-    stmpfs_add_test(debug       "Debug test")
+    _add_test(error       "Error test")
+    _add_test(debug       "Debug test")
 endif()

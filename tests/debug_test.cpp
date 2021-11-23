@@ -17,6 +17,8 @@ void func1()
     FUNCTION_INFO;
     OBTAIN_STACK_FRAME;
 
+
+
     func2();
 }
 
