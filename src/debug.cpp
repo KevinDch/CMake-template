@@ -64,6 +64,24 @@ std::string __get_addr(const std::string& input)
     return output;
 }
 
+std::string __get_path(const std::string& input)
+{
+    std::string pathname;
+    for (auto i : input)
+    {
+        if (i != '(')
+        {
+            pathname += i;
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    return pathname;
+}
+
 std::vector < std::string > str2lines(const std::string& input)
 {
     std::string line;
